@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - bitesbyraf</title>
+  <link rel="stylesheet" href="styles.css?v=6">
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo-container">
+      <img src="images/logo.png" alt="bitesbyraf Logo" class="logo-img">
+      <span class="logo-text">bitesbyraf</span>
+    </a>
+    <div class="nav-links">
+      <a href="product_list.html">
+        <img src="images/icon-products.png" alt="Products" class="nav-icon">
+      </a>
+
+      <a href="cart.html" class="active" style="position: relative;">
+        <img src="images/icon-cart.png" alt="Cart" class="nav-icon">
+        <span id="cart-count" class="cart-badge" style="display:none;">0</span>
+      </a>
+
+      <a href="admin.html">
+        <img src="images/icon-admin.png" alt="Admin" class="nav-icon">
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <h1 class="section-title">Checkout</h1>
+
+  <div class="two-col">
+    <div class="card">
+      <h2 style="font-family: 'Playfair Display', serif;">Delivery Details</h2>
+      
+      <form id="checkout-form" onsubmit="handleCheckout(event)">
+        <label>Full Name</label>
+        <input type="text" id="cust-name" placeholder="e.g. Rafidah" required>
+
+        <label>Email Address</label>
+        <input type="email" id="cust-email" placeholder="e.g. rafidah@email.com" required>
+
+        <label>Phone Number</label>
+        <input type="text" id="cust-phone" placeholder="e.g. 012-3456789" required>
+
+        <label>Delivery Address</label>
+        <textarea rows="4" id="cust-address" placeholder="Enter your full address here..." required></textarea>
+
+        <h3 style="margin-top: 20px; font-family:'Playfair Display', serif;">Payment Details</h3>
+        <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee;">
+            <label>Card Number (Use 0000 to Fail)</label>
+            <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19" required>
+            
+            <div style="display: flex; gap: 10px;">
+            <div style="flex:1">
+                <label>Expiry</label>
+                <input type="text" placeholder="MM/YY" maxlength="5" required>
+            </div>
+            <div style="flex:1">
+                <label>CVC</label>
+                <input type="text" placeholder="123" maxlength="3" required>
+            </div>
+            </div>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-block">Place Order</button>
+      </form>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2 style="font-family: 'Playfair Display', serif;">Order Summary</h2>
+        
+        <div id="summary-list" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+          <p style="text-align: center;">Loading cart summary...</p>
+        </div>
+        
+        <div id="summary-totals">
+          <h3>Total: <span style="float:right; color: var(--primary-pink);">RM 0.00</span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-box"></div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-top">
+      <h3 class="footer-brand-name">bitesbyraf</h3>
+      <p class="footer-tagline">Just a humble small business based in Cat City! 🤍</p>
+    </div>
+
+    <div class="footer-contact-area">
+      <a href="https://wa.me/60128173400" target="_blank" class="contact-link">
+        <span class="contact-icon">💬</span> WhatsApp: +60 12-817 3400 (Rafiqa)
+      </a>
+      <a href="https://instagram.com/bitesbyraf" target="_blank" class="contact-link">
+        <span class="contact-icon">📸</span> Instagram: @bitesbyraf
+      </a>
+    </div>
+
+    <div class="footer-copyright-row">
+      <p>&copy; 2025 bitesbyraf. Baked with <span style="color:red">♥</span> in Kuching.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
